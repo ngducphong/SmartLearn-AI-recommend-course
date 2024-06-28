@@ -39,10 +39,10 @@ finally:
         print("Đã đóng kết nối đến MySQL")
 
 if not df_sanpham.empty:
-    features = ['description', 'price']
+    features = ['description', 'price', 'category_id', 'title', 'sub_description']
 
     def combineFeatures(row):
-        return str(row['price']) + " " + str(row['description'])
+        return str(row['price']) + " " + str(row['description']) + " " + str(row['category_id']) + " " + str(row['title']) + " " + str(row['sub_description'])
 
     # Lấy ra các đặc chưng thêm cột SQL
     df_sanpham['combinedFeatures'] = df_sanpham.apply(combineFeatures, axis=1)
